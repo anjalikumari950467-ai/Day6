@@ -1,7 +1,13 @@
 async function getQuote(){
-    let response = await fetch("https://api.quotable.io/random");
-    let data = await response.json();
+    try {
+        let response = await fetch("https://dummyjson.com/quotes/random");
+        let data = await response.json();
 
-    document.getElementById("quote").innerText = data.content;
-    document.getElementById("author").innerText = "- " + data.author;
+        document.getElementById("quote").innerText = data.quote;
+        document.getElementById("author").innerText = "- " + data.author;
+    } 
+    catch(error) {
+        document.getElementById("quote").innerText = "Error loading quote ";
+        document.getElementById("author").innerText = "";
+    }
 }
